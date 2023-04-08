@@ -1,9 +1,6 @@
-package homework
+package formula
 
-import formula.Formula
-import formula.FormulaParser
-import formula.valid
-import formula.world
+import homework.print
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse

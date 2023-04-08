@@ -1,12 +1,7 @@
-package homework
+package formula
 
-import formula.Formula
-import formula.toCnf
 import kotlin.test.Test
 import kotlin.test.assertEquals
-
-private val String.noSpecialCharacters: String
-    get() = replace("¬", "!")//.replace("∨", "v")
 
 public class TestToCnf {
     @Test
@@ -29,4 +24,8 @@ public class TestToCnf {
 
 
     }
+
+    private val String.noSpecialCharacters: String
+        get() = replace("¬", "!")//.replace("∨", "v")
+
 }

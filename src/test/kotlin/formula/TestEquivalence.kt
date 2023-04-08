@@ -1,14 +1,12 @@
-package homework
+package formula
 
-import formula.Formula
-import formula.equivalentTo
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 public class TestEquivalence {
     @Test
-    fun equivilent() {
+    fun equivalent() {
         listOf(
             Pair("A ∨ B", "B ∨ A"),
             Pair("A =⇒ B", "¬B =⇒ ¬A"),
@@ -18,8 +16,9 @@ public class TestEquivalence {
             assertTrue(f1.equivalentTo(f2), it.toString())
         }
     }
+
     @Test
-    fun notEquivilent() {
+    fun notEquivalent() {
         listOf(
             Pair("A ∨ B", "B"),
             Pair("A =⇒ B", "¬B =⇒ A"),
