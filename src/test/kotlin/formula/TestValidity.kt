@@ -1,20 +1,20 @@
 package formula
 
 import homework.print
-import kotlin.test.DefaultAsserter.assertEquals
 import kotlin.test.Test
-import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
-public class TestParser {
+public class TestValidity {
     @Test
     fun invalidOperator() {
         Formula.parse("A=>B").print()
     }
 
     @Test
-    fun toModelAndBack(): Unit {
+    fun invalid(): Unit {
         listOf(
+
             "A", //TODO NOT valid
             "!A", //TODO NOT valid
             "A -> B",
@@ -24,7 +24,8 @@ public class TestParser {
             "(A ∨ B) -> (!A ∧ !B)",
         ).onEach {
             FormulaParser(it).model().apply {
-                assertEquals(it, source)
+                println("$it valid $valid")
+                assertFalse(valid, it)
             }
         }
     }
