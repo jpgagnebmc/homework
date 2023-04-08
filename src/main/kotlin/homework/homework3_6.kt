@@ -24,9 +24,9 @@ private fun main() {
 
     println("3.6. Consider a family with two children, ages four and nine:")
     df.filter { Older() == "boy" }.sumOf { Pr() }.print("  (a) What is the probability that the older child is a boy?")
-    df.filter { Older() == "boy" }.filter { Older() == "boy" }.sumOf { PrYoungerBoy() }.print("  (b) What is the probability that the older child is a boy given that the younger child is a boy?")
-    df.filter { Older() == "boy" }.filter { Older() == "boy" }.sumOf { PrNotGirlGirl() }.print("  (c) What is the probability that the older child is a boy given that at least one of the children is a boy?")
-    df.filter { Older() == "boy" }.filter { Older() == "boy" && Younger() == "boy" }.sumOf { PrNotGirlGirl() }.print("  (d) What is the probability that both children are boys given that at least one of them is a boy?")
+    df.filter { Older() == "boy" }.sumOf { PrYoungerBoy() }.print("  (b) What is the probability that the older child is a boy given that the younger child is a boy?")
+    df.filter { Older() == "boy" }.sumOf { PrNotGirlGirl() }.print("  (c) What is the probability that the older child is a boy given that at least one of the children is a boy?")
+    df.filter { Older() == "boy" && Younger() == "boy" }.sumOf { PrNotGirlGirl() }.print("  (d) What is the probability that both children are boys given that at least one of them is a boy?")
 
 
 }
