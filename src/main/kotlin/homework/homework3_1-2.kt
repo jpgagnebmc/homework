@@ -68,7 +68,7 @@ public fun main() {
     jd.addConditionalDistributionColumn(PrA, { filter { A() } }).filter { A() || B() }.sumOf { PrA() }.print("  What is Pr(A = true|A = true ∨ B = true)?")
     jd.addConditionalDistributionColumn(PrB, { filter { B() } }).filter { A() || B() }.sumOf { PrB() }.print("  What is Pr(B = true|A = true ∨ B = true)?")
 
-    println("3.2d Determine if the event B = true is conditionally independent of C = true given the event A = true ∨ B = true?  ANSWER YES")
+    println("\n3.2d Determine if the event B = true is conditionally independent of C = true given the event A = true ∨ B = true?  ANSWER YES")
     val PrAorB by column<Double>("Pr(.|A v B)")
     jd.addConditionalDistributionColumn(PrAorB, { filter { A() || B() } }).apply {
         filter { B() }.sumOf { PrAorB() }.print("  Pr(B|A v B)")
