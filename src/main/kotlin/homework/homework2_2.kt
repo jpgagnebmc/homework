@@ -1,7 +1,7 @@
 package homework
 
 import formula.Formula
-import formula.onEach
+import formula.formulaOnEach
 import formula.valid
 import formula.world
 
@@ -16,7 +16,7 @@ fun main() {
     }
     homework("2.2b", "(A ∧ B) ∨ (A ∧ ¬B)") { f ->
         println("valid ${f.valid}")
-        f.world.onEach {
+        f.world.formulaOnEach {
             if (!f.evaluate(it)) println("invalid $it")
         }
     }

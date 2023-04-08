@@ -29,20 +29,20 @@ data class World(val vars: List<Formula.Var>, val df: DataFrame<*>) {
 val Formula.world: AnyFrame
     get() = World.generateDf(vars)
 
-fun <T> DataFrame<T>.onEach(func: (DataRow<T>) -> Unit) {
+fun <T> DataFrame<T>.formulaOnEach(func: (DataRow<T>) -> Unit) {
     iterator().forEach {
         func(it)
     }
 }
 
-fun <T, R> DataFrame<T>.map(func: (DataRow<T>) -> R): List<R> = mutableListOf<R>().apply {
-    this@map.iterator().forEach {
+fun <T, R> DataFrame<T>.formulaMap(func: (DataRow<T>) -> R): List<R> = mutableListOf<R>().apply {
+    this@formulaMap.iterator().forEach {
         add(func(it))
     }
 }.toList()
 
-fun <T> DataFrame<T>.filter(func: (DataRow<T>) -> Boolean): List<DataRow<T>> = mutableListOf<DataRow<T>>().apply {
-    this@filter.iterator().forEach {
+fun <T> DataFrame<T>.formulaFilter(func: (DataRow<T>) -> Boolean): List<DataRow<T>> = mutableListOf<DataRow<T>>().apply {
+    this@formulaFilter.iterator().forEach {
         if (func(it)) add(it)
     }
 }.toList()

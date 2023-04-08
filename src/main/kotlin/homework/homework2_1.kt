@@ -2,14 +2,14 @@ package homework
 
 import formula.Formula
 import formula.world
-import formula.map
+import formula.formulaMap
 
 fun main() {
 
     //Show that the following sentences are consistent by identifying a world that satisfies each sentence:
 
     homework("2.1a", "(A =⇒ B) ∧ (A =⇒ ¬B)") { f ->
-        f.world.map {
+        f.world.formulaMap {
             if (f.evaluate(it)) println(it)
         }
     }

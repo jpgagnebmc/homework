@@ -4,7 +4,7 @@ import formula.Formula
 import formula.World
 import formula.exhaustive
 import formula.mutuallyExclusive
-import formula.map
+import formula.formulaMap
 
 fun main() {
 
@@ -27,13 +27,13 @@ fun homework2_5(title: String, s1: String, s2: String) {
     println("mutually exclusive $me")
     println("exhaustive $ex")
     if (!me) {
-        World.generateDf((f1.vars + f2.vars).distinct()).map {
+        World.generateDf((f1.vars + f2.vars).distinct()).formulaMap {
             Triple(it, f1.evaluate(it), f2.evaluate(it))
         }.firstOrNull { it.second == true && it.third == true }
             ?.run { println("both hold world ${first}") }
     }
     if (!ex) {
-        World.generateDf((f1.vars + f2.vars).distinct()).map {
+        World.generateDf((f1.vars + f2.vars).distinct()).formulaMap {
             Triple(it, f1.evaluate(it), f2.evaluate(it))
         }.firstOrNull { it.second == false && it.third == false }
             ?.run { println("neither hold world ${first}") } ?: println("no worlds unheld by both ")

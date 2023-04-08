@@ -8,7 +8,7 @@ fun Formula.Companion.exhaustive(f1: Formula, f2: Formula): Boolean {
     val world = World.generateDf((f1.vars + f2.vars).distinct().sortedBy { it.letter })
     val t1 = mutableListOf<DataRow<*>>()
     val t2 = mutableListOf<DataRow<*>>()
-    world.onEach {
+    world.formulaOnEach {
         if (f1.evaluate(it)) t1.add(it)
         if (f2.evaluate(it)) t2.add(it)
     }
@@ -19,7 +19,7 @@ fun Formula.Companion.mutuallyExclusive(f1: Formula, f2: Formula): Boolean {
     val world = World.generateDf((f1.vars + f2.vars).distinct().sortedBy { it.letter })
     val t1 = mutableListOf<DataRow<*>>()
     val t2 = mutableListOf<DataRow<*>>()
-    world.onEach {
+    world.formulaOnEach {
         if (f1.evaluate(it)) t1.add(it)
         if (f2.evaluate(it)) t2.add(it)
     }

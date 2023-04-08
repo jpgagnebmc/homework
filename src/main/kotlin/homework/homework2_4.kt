@@ -3,7 +3,7 @@ package homework
 import formula.Formula
 import formula.implies
 import formula.world
-import formula.map
+import formula.formulaMap
 
 fun main() {
 
@@ -24,8 +24,8 @@ private fun homeworkImplies(title: String, s1: String, s2: String) {
 
     if(!result) {
         println("world true for first sentence but not for second: ")
-        f1.world.map {
-            if(f1.evaluate(it) == true && f2.evaluate(it) == false) it else null
+        f1.world.formulaMap {
+            if (f1.evaluate(it) == true && f2.evaluate(it) == false) it else null
         }.filterNotNull()
             .firstOrNull()?.print() ?: println("none")
     }

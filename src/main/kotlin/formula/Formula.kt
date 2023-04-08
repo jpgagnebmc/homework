@@ -95,7 +95,7 @@ sealed interface Subformula : Formula {
 fun Formula.implies(f2: Formula): Boolean {
 //    println("$source implies ${f2.source}")
     return if (vars.containsAll(f2.vars)) {
-        world.map {
+        world.formulaMap {
 //            println("Formula.implies $it ${evaluate(it)} ${f2.evaluate(it)}")
             Pair(evaluate(it), f2.evaluate(it))
         }.all { it.first == it.second }//.print("returning")

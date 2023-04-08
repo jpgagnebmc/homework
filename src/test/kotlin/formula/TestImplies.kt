@@ -12,7 +12,7 @@ public class TestImplies {
     fun truth() {
         Formula.parse("A => B").print().apply {
 
-            assertEquals(false, truth.filter { it["A"] == true && it["B"] == false }.first()["A -> B"])
+            assertEquals(false, truth.formulaFilter { it["A"] == true && it["B"] == false }.first()["A -> B"])
             truth.print().getColumnOrNull("A -> B")!!.apply {
                 assertEquals(listOf(true, false, true, true), toList())
             }
