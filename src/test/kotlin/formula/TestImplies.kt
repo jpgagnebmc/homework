@@ -1,12 +1,11 @@
 package formula
 
-import homework.print
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 import org.jetbrains.kotlinx.dataframe.api.*
-import org.jetbrains.kotlinx.dataframe.*
+
 public class TestImplies {
 
     @Test

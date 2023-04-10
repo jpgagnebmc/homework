@@ -1,12 +1,12 @@
 package homework
 
 import formula.Formula
+import formula.print
 import formula.valid
 import formula.world
 import org.jetbrains.kotlinx.dataframe.api.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFails
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 

@@ -1,13 +1,12 @@
 package homework
 
 import formula.Formula
+import formula.print
 import formula.world
 
 import kotlin.test.Test
 import org.jetbrains.kotlinx.dataframe.api.*
-import org.jetbrains.kotlinx.dataframe.*
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class Chapter2_1() {
     private val A by column<Boolean>()

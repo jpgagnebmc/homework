@@ -1,6 +1,5 @@
 package formula
 
-import homework.print
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue

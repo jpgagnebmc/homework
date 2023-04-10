@@ -1,4 +1,4 @@
-package homework
+package formula
 
 import kotlin.math.pow
 

@@ -1,10 +1,9 @@
 package homework
 
 import formula.Formula
-import formula.World
 import formula.exhaustive
-import formula.exhaustiveIntersection
 import formula.mutuallyExclusive
+import formula.print
 import formula.world
 import org.jetbrains.kotlinx.dataframe.api.*
 import kotlin.test.Test

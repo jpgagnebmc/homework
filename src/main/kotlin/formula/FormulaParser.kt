@@ -3,7 +3,6 @@ package formula
 import PropositionalLogicLexer
 import PropositionalLogicParser
 import formula.Formula.*
-import homework.print
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CommonTokenStream
 

@@ -1,9 +1,7 @@
 package formula
 
-import homework.print
 import org.jetbrains.kotlinx.dataframe.DataRow
 import org.jetbrains.kotlinx.dataframe.api.*
-import org.jetbrains.kotlinx.dataframe.*
 
 fun Formula.equivalentTo(f2: Formula): Boolean = implies(f2) && f2.implies(this)
 

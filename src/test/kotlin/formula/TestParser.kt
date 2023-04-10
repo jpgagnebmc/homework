@@ -4,12 +4,8 @@ import formula.Formula.And
 import formula.Formula.Not
 import formula.Formula.Or
 import formula.Formula.Var
-import homework.print
-import kotlin.test.DefaultAsserter.assertEquals
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
 
 public class TestParser {
 //    @Test

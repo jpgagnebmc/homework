@@ -2,6 +2,7 @@ package homework
 
 import formula.Formula
 import formula.implies
+import formula.print
 import formula.world
 import org.jetbrains.kotlinx.dataframe.api.*
 import kotlin.test.assertFalse

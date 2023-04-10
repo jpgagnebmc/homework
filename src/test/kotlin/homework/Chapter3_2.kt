@@ -1,5 +1,13 @@
 package homework
 
+import dataframe.A
+import dataframe.B
+import dataframe.C
+import dataframe.Pr
+import dataframe.PrAorB
+import dataframe.World
+import dataframe.addConditionalDistributionColumn
+import formula.print
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.api.column
 import org.jetbrains.kotlinx.dataframe.api.dataFrameOf
@@ -10,17 +18,11 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotEquals
 
 class Chapter3_2 {
-    private val A by column<Boolean>()
-    private val B by column<Boolean>()
-    private val C by column<Boolean>()
-    private val Pr by column<Double>("Pr(.)")
-    private val PrAorB by column<Double>("Pr(.|A v B)")
-    private val PrB by column<Double>("Pr(.|B)")
-    private val PrC by column<Double>("Pr(.|C)")
+
     val data = raw.lines().chunked(8)
-    val df = dataFrameOf("world", A.name(), B.name(), C.name(), Pr.name())
+    val df = dataFrameOf(World.name(), A.name(), B.name(), C.name(), Pr.name())
         .invoke(
-            DataColumn.create<String>("world", data[0]),
+            DataColumn.create<String>(World.name(), data[0]),
             DataColumn.create<Boolean>(A.name(), data[1].map { it.toBooleanStrict() }),
             DataColumn.create<Boolean>(B.name(), data[2].map { it.toBooleanStrict() }),
             DataColumn.create<Boolean>(C.name(), data[3].map { it.toBooleanStrict() }),

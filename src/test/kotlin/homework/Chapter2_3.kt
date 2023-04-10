@@ -3,6 +3,7 @@ package homework
 import formula.Formula
 import formula.equivalentTo
 import formula.implies
+import formula.print
 import formula.world
 import org.jetbrains.kotlinx.dataframe.api.column
 import org.jetbrains.kotlinx.dataframe.api.filter

@@ -1,5 +1,13 @@
 package homework
 
+import dataframe.D
+import dataframe.Pr
+import dataframe.PrD
+import dataframe.PrNotD
+import dataframe.T
+import dataframe.World
+import dataframe.addConditionalDistributionColumn
+import formula.print
 import org.jetbrains.kotlinx.dataframe.api.*
 import kotlin.math.pow
 import kotlin.test.Test
@@ -15,17 +23,12 @@ class Chapter3_8 {
     //        errors of various tests are independent? Justify your answer.
     @Test
     fun homework3_8() {
-        val world by column<String>()
-        val D by column<Boolean>()
-        val T by column<Boolean>()
-        val Pr by column<Double>("Pr(.)")
-        val PrD by column<Double>("Pr(.|D)")
-        val PrNotD by column<Double>("Pr(.|!D)")
+
         val prior = 0.001
         val falsePositive = 0.02
         val falseNegative = 0.05
 
-        val df = dataFrameOf(world, D, T, Pr)
+        val df = dataFrameOf(World, D, T, Pr)
             .invoke(
                 *listOf(
                     listOf("w1", true, true, (1 - falseNegative) * prior),
@@ -53,6 +56,7 @@ class Chapter3_8 {
         val marginal = (conditional.pow(i) * prior) + prTFalsePositive.pow(i) * (1 - prior)
         return (conditional * prior / marginal)
     }
+
+    fun Double.format(scale: Int) = "%.${scale}f".format(this)
 }
 
-fun Double.format(scale: Int) = "%.${scale}f".format(this)
