@@ -12,18 +12,29 @@ public class TestValidity {
     }
 
     @Test
+    fun valid(): Unit {
+        listOf(
+            "A ∨ ¬A",
+        ).onEach {
+            Formula.parse(it).apply {
+                println("$it valid $valid")
+                assertTrue(valid, it)
+            }
+        }
+    }
+
+    @Test
     fun invalid(): Unit {
         listOf(
-
-            "A", //TODO NOT valid
-            "!A", //TODO NOT valid
+            "A",
+            "!A",
             "A -> B",
             "(A ∨ B)",
             "(A -> !B)",
             "(A -> B) ∧ (A -> !B)",
             "(A ∨ B) -> (!A ∧ !B)",
         ).onEach {
-            FormulaParser(it).model().apply {
+            Formula.parse(it).apply {
                 println("$it valid $valid")
                 assertFalse(valid, it)
             }

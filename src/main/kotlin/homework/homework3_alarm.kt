@@ -1,5 +1,6 @@
 package homework
 
+import com.ibm.icu.util.UniversalTimeScale.toBigDecimal
 import org.jetbrains.kotlinx.dataframe.DataColumn
 import org.jetbrains.kotlinx.dataframe.DataFrame
 import org.jetbrains.kotlinx.dataframe.api.column
@@ -7,6 +8,10 @@ import org.jetbrains.kotlinx.dataframe.api.dataFrameOf
 
 import org.jetbrains.kotlinx.dataframe.api.*
 import org.jetbrains.kotlinx.dataframe.columns.ColumnAccessor
+import java.math.RoundingMode
+import kotlin.math.abs
+import kotlin.math.absoluteValue
+import kotlin.math.roundToInt
 
 private val Earthquake by column<Boolean>()
 private val world by column<String>()
@@ -46,11 +51,10 @@ private fun main() {
 }
 
 public fun <T> DataFrame<T>.addConditionalDistributionColumn(newCol: ColumnAccessor<Double>, f: DataFrame<T>. () -> DataFrame<T>): DataFrame<T> {
-    val newSum = f.invoke(this).sumOf { Pr() }
+    val newSum = f.invoke(this).sumOf { Pr() }.toDouble()
     val vals = f.invoke(this).associate { world() to Pr() / newSum }
-
-    return add(DataColumn.create<Double>(newCol.name(), map { vals.get(world()) ?: 0.toDouble() })).also {
-        it.sumOf { newCol() }
+    return add(DataColumn.create<Double>(newCol.name(), map { vals[world()] ?: 0.toDouble() })).also {
+        if (it.sumOf { newCol() }.minus(1.toDouble()).absoluteValue > 0.00000000000001.toDouble()) throw Exception("${newCol.name()} sum is ${it.sumOf { newCol() }}")
     }
 }
 

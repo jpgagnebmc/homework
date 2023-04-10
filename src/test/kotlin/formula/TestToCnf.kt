@@ -21,11 +21,8 @@ public class TestToCnf {
                 assertEquals(it.second.noSpecialCharacters, source)
             }
         }
-
-
     }
 
     private val String.noSpecialCharacters: String
         get() = replace("¬", "!")//.replace("∨", "v")
-
 }

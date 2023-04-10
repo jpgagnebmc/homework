@@ -1,8 +1,10 @@
 package formula
 
 import org.jetbrains.kotlinx.dataframe.DataRow
+import org.jetbrains.kotlinx.dataframe.api.*
 
-//som
+fun Formula(stmt: String): Formula = Formula.parse(stmt)
+
 sealed interface Formula {
     val source: String
     val vars: List<Var>
@@ -93,13 +95,7 @@ sealed interface Subformula : Formula {
 }
 
 fun Formula.implies(f2: Formula): Boolean {
-//    println("$source implies ${f2.source}")
-    return if (vars.containsAll(f2.vars)) {
-        world.formulaMap {
-//            println("Formula.implies $it ${evaluate(it)} ${f2.evaluate(it)}")
-            Pair(evaluate(it), f2.evaluate(it))
-        }.all { it.first == it.second }//.print("returning")
-    } else {
-        false
-    }
+    return World.generateDf(vars + f2.vars).map {
+        Pair(evaluate(it), f2.evaluate(it))
+    }.all { it.first == it.second }
 }

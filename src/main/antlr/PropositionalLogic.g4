@@ -6,13 +6,24 @@ proposition
    ;
 
 expression
-   : relExpression ((AND | OR) relExpression)*
+   : relExpression
    ;
 
 relExpression
    : atom
-   | equiv
-   | implies
+   | andatoms
+   ;
+
+andatoms
+   : atom
+   | atom OPERATOR andatoms
+   ;
+
+OPERATOR
+   : AND
+   | OR
+   | IMPLIES
+   | EQUIV
    ;
 
 atoms
@@ -59,7 +70,7 @@ EQ
 
 
 IMPLIES
-   : '->' | '=⇒' | '=>'
+   : '->' | '=⇒' | '=>' | '==>'
    ;
 
 

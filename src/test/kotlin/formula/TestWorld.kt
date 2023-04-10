@@ -8,18 +8,18 @@ import kotlin.test.assertFalse
 public class TestWorld {
     @Test
     fun singleVar(): Unit {
-        Formula.parse("A").world.apply {
+        Formula.parse("A").world.print().apply {
             print()
             assertEquals(2, rowsCount())
-            assertEquals(1, columnsCount())
+            assertEquals(2, columnsCount())
         }
     }
     @Test
     fun twoVar(): Unit {
-        Formula.parse("A -> B").world.apply {
+        Formula.parse("A =⇒ B").print().world.apply {
             print()
             assertEquals(4, rowsCount())
-            assertEquals(2, columnsCount())
+            assertEquals(3, columnsCount())
         }
     }
 
@@ -29,6 +29,7 @@ public class TestWorld {
             "A ∧ ¬A"
         ).onEach {
             FormulaParser(it).model().apply {
+                world.print()
                 assertFalse(valid)
             }
         }

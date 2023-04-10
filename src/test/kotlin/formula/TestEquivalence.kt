@@ -1,5 +1,6 @@
 package formula
 
+import homework.print
 import kotlin.test.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -10,6 +11,7 @@ public class TestEquivalence {
         listOf(
             Pair("A ∨ B", "B ∨ A"),
             Pair("A =⇒ B", "¬B =⇒ ¬A"),
+            Pair("¬A", "(A =⇒ B) ∧ (A =⇒ ¬B)")
         ).onEach {
             val f1 = Formula.parse(it.first)
             val f2 = Formula.parse(it.second)
@@ -22,10 +24,9 @@ public class TestEquivalence {
         listOf(
             Pair("A ∨ B", "B"),
             Pair("A =⇒ B", "¬B =⇒ A"),
-            Pair("(A =⇒ B) ∧ (A =⇒ ¬B)", "¬A")
         ).onEach {
-            val f1 = Formula.parse(it.first)
-            val f2 = Formula.parse(it.second)
+            val f1 = Formula.parse(it.first).print()
+            val f2 = Formula.parse(it.second).print()
             assertFalse(f1.equivalentTo(f2), it.toString())
         }
     }
